@@ -108,11 +108,11 @@ var color = d3.scale.linear()
     .range([colors.length-1, 0])
     .clamp(true);
 
-var diameter = 960;
-var rect_width = 40;
-var rect_height = 14;
+var diameter = 1024;
+var rect_width = 0;
+var rect_height = 64; // distancia vertical entre items
 
-var link_width = "1px"; 
+var link_width = "1.5px";
 
 var il = data.inner.length;
 var ol = data.outer.length;
@@ -124,7 +124,8 @@ var inner_y = d3.scale.linear()
 mid = (data.outer.length/2.0)
 var outer_x = d3.scale.linear()
     .domain([0, mid, mid, data.outer.length])
-    .range([15, 170, 190 ,355]);
+    .range([30, 160, 220 ,355]);
+    // Grados de aparición de los terminos
 
 var outer_y = d3.scale.linear()
     .domain([0, data.outer.length])
