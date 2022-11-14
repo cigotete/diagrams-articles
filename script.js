@@ -196,9 +196,7 @@ var onode = svg.append('g').selectAll(".outer_node")
     .data(data.outer)
   .enter().append("g")
     .attr("class", "outer_node")
-    .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
-    .on("mouseover", mouseover)
-    .on("mouseout", mouseout);
+    .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; });
   
 onode.append("circle")
     .attr('id', function(d) { return d.id })
@@ -221,9 +219,7 @@ var inode = svg.append('g').selectAll(".inner_node")
     .data(data.inner)
   .enter().append("g")
     .attr("class", "inner_node")
-    .attr("transform", function(d, i) { return "translate(" + d.x + "," + d.y + ")"})
-    .on("mouseover", mouseover)
-    .on("mouseout", mouseout);
+    .attr("transform", function(d, i) { return "translate(" + d.x + "," + d.y + ")"});
   
 inode.append('rect')
     .attr('width', rect_width)
@@ -240,32 +236,5 @@ inode.append("text")
 // need to specify x/y/etc
 
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
-
-function mouseover(d)
-{
-	// bring to front
-	d3.selectAll('.links .link').sort(function(a, b){ return d.related_links.indexOf(a.id); });	
-	
-    for (var i = 0; i < d.related_nodes.length; i++)
-    {
-        d3.select('#' + d.related_nodes[i]).classed('highlight', true);
-        d3.select('#' + d.related_nodes[i] + '-txt').attr("font-weight", 'bold');
-    }
-    
-    for (var i = 0; i < d.related_links.length; i++)
-        d3.select('#' + d.related_links[i]).attr('stroke-width', '5px');
-}
-
-function mouseout(d)
-{   	
-    for (var i = 0; i < d.related_nodes.length; i++)
-    {
-        d3.select('#' + d.related_nodes[i]).classed('highlight', false);
-        d3.select('#' + d.related_nodes[i] + '-txt').attr("font-weight", 'normal');
-    }
-    
-    for (var i = 0; i < d.related_links.length; i++)
-        d3.select('#' + d.related_links[i]).attr('stroke-width', link_width);
-}
 
 });
