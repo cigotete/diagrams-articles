@@ -1,6 +1,6 @@
 
 svg {
-  font: 12px sans-serif;
+  font: 18px sans-serif;
 }
 
 text {
@@ -17,7 +17,7 @@ text {
 }
 
 .outer_node circle {
-  fill: #fff;
+  fill: #4285f4;
   stroke: steelblue;
   stroke-width: 1.5px;
   pointer-events: all;
