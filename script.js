@@ -108,11 +108,11 @@ var color = d3.scale.linear()
     .range([colors.length-1, 0])
     .clamp(true);
 
-var diameter = 1024;
-var rect_width = 0;
+var diameter = 1280;
+var rect_width = 170; // ancho cuadro interno
 var rect_height = 64; // distancia vertical entre items
 
-var link_width = "1.5px";
+var link_width = "1.5px"; // ancho lineas vinculantes
 
 var il = data.inner.length;
 var ol = data.outer.length;
@@ -124,8 +124,9 @@ var inner_y = d3.scale.linear()
 mid = (data.outer.length/2.0)
 var outer_x = d3.scale.linear()
     .domain([0, mid, mid, data.outer.length])
-    .range([30, 160, 220 ,355]);
-    // Grados de aparición de los terminos
+    .range([50, 150, 235 ,325]); // Grados de aparición de los terminos externos
+    //.range([70, 140, 235 ,325]); // Grados de aparición de los terminos externos
+
 
 var outer_y = d3.scale.linear()
     .domain([0, data.outer.length])
@@ -135,7 +136,7 @@ var outer_y = d3.scale.linear()
 // setup positioning
 data.outer = data.outer.map(function(d, i) { 
     d.x = outer_x(i);
-    d.y = diameter/3;
+    d.y = diameter/4;
     return d;
 });
 
@@ -150,7 +151,7 @@ function get_color(name)
 {
     var c = Math.round(color(name));
     if (isNaN(c))
-        return '#dddddd';	// fallback color
+        return '#8ab4f8';	// fallback color
     
     return colors[c];
 }
@@ -225,12 +226,13 @@ inode.append('rect')
     .attr('width', rect_width)
     .attr('height', rect_height)
     .attr('id', function(d) { return d.id; })
+    .style("stroke", 'white')
     .attr('fill', function(d) { return get_color(d.name); });
   
 inode.append("text")
 	.attr('id', function(d) { return d.id + '-txt'; })
     .attr('text-anchor', 'middle')
-    .attr("transform", "translate(" + rect_width/2 + ", " + rect_height * .75 + ")")
+    .attr("transform", "translate(" + rect_width/2 + ", " + rect_height * .65 + ")") // Size box labels
     .text(function(d) { return d.name; });
 
 // need to specify x/y/etc
