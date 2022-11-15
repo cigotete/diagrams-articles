@@ -11,7 +11,11 @@
 //
 
 
-var file = "/data/data.csv";
+var file = "/data/data-microparendizaje.csv";
+var file = "/data/data-gamification-caracteristics.csv";
+var file = "/data/data-gamificacion-elementos.csv";
+//var file = "/data/data-medidas-evaluacion.csv";
+
 d3.text(file, "text/csv", function(text) {
   var rows = d3.csv.parseRows(text);
   //console.log(rows);
