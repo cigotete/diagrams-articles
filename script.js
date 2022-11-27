@@ -11,10 +11,10 @@
 //
 
 
-var file = "/data/data-microparendizaje.csv";
+//var file = "/data/data-microparendizaje.csv";
 var file = "/data/data-gamification-caracteristics.csv";
-var file = "/data/data-gamificacion-elementos.csv";
-var file = "/data/data-medidas-evaluacion.csv";
+//var file = "/data/data-gamificacion-elementos.csv";
+//var file = "/data/data-medidas-evaluacion.csv";
 
 d3.text(file, "text/csv", function(text) {
   var rows = d3.csv.parseRows(text);
@@ -128,7 +128,7 @@ var inner_y = d3.scale.linear()
 mid = (data.outer.length/2.0)
 var outer_x = d3.scale.linear()
     .domain([0, mid, mid, data.outer.length])
-    .range([70, 150, 235 ,325]); // Grados de aparición de los terminos externos
+    .range([60, 150, 235 ,325]); // Grados de aparición de los terminos externos
     //.range([70, 140, 235 ,325]); // Grados de aparición de los terminos externos
 
 
